@@ -1,5 +1,5 @@
 const fs = require('fs');
-const db = require('../../../database/queries');
+const db = require('../../../database/db_connection');
 
 // !! will turn the value into a boolean
 // so if length is 0 then it's converted to false which means user not found
@@ -30,20 +30,37 @@ exports.findByUsername = (username) =>
  * @param  {string} username
  * @param  {string} password
  */
-exports.addNewUser = (email, password, name, admin) =>
-  new Promise((resolve, reject) =>
-  // EXISTS returns the following [ { exists: BOOLEAN } ]
-      db.isUserExists(email)
-      .then(([{ exists }]) => {
-        if (exists) {
+exports.addNewUser = async (email, password, name, admin) => {
+
+  return new Promise((resolve, reject) => {
+    // EXISTS returns the following [ { exists: BOOLEAN } ]
+    db
+      //.query('SELECT EXISTS(SELECT 1 FROM users WHERE email = $1)', [email])
+      .query('SELECT EXISTS(SELECT 1 FROM users WHERE email = $1)', [email])
+      .then((exists) => {
+        console.log(exists.rows[0].exists);
+        if (exists.rows[0].exists) {
+
           return reject(new Error('User already exists in our database'));
         }
+
         // adds the user to the db
-        db.adduser(email, password, name, admin).then(() => resolve('User has been added'));
+        var array = [
+          email,
+          password,
+          name,
+          admin
+        ]
+        // adds the user to the db
+        db.query('INSERT INTO users (email,password,name,admin) VALUES ($1, $2,$3,$4)', array)
+          .then(() => resolve('User has been added')).catch((e) => console.log("Error in insert new user " + e));
+
 
       })
       .catch((error) => {
         console.log(`addNewUser Error: ${error}`);
         reject(new Error('An error has occurred in the db, addNewUser'));
       })
-  );
+  }
+  )
+};
