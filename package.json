@@ -6,7 +6,8 @@
     "scripts": {
         "start": "node src/index.js",
         "dev": "nodemon src/index.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": " tape src/test/router.js | tap-spec",
+        "dbtest": "node database/test.js | tap-spec"
     },
     "author": "",
     "license": "ISC",
@@ -21,7 +22,7 @@
         "path": "^0.12.7",
         "winston": "^3.2.1",
         "env2": "^2.2.2",
-        "pg": "^8.0.3"
+        "pg": "^7.12.1"
     },
     "devDependencies": {
         "helmet": "^3.22.0",

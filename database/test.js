@@ -38,21 +38,21 @@ tape("get user name by  id ", t => {
                       postid: 1,
                       content: 'keep things short',
                       likes: 3,
-                      postdate: '2019-05-24T21:00:00.000Z',
+                      postdate: new Date('2019-02-05T00:00:00 GMT'),
                       userid: 1
                     },
                     {
                       postid: 2,
                       content: 'im addicted to Cola',
                       likes: 1,
-                      postdate: '2019-02-28T22:00:00.000Z',
+                      postdate: new Date('2019-01-03T00:00:00 GMT'),
                       userid: 2
                     },
                     {
                       postid: 3,
                       content: 'have a nice day',
                       likes: 2,
-                      postdate: '2019-08-31T21:00:00.000Z',
+                      postdate: new Date('2019-01-09T00:00:00 GMT'),
                       userid: 3
                     }
                   ]
