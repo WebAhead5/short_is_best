@@ -38,14 +38,14 @@ tape("get user name by  id ", t => {
                       postid: 1,
                       content: 'keep things short',
                       likes: 3,
-                      postdate: new Date('2019-02-05T00:00:00 GMT'),
+                      postdate: Date (2020,5,02,00,00,00),
                       userid: 1
                     },
                     {
                       postid: 2,
                       content: 'im addicted to Cola',
                       likes: 1,
-                      postdate: new Date('2019-01-03T00:00:00 GMT'),
+                      postdate:  Date('2019-01-03T00:00:00 GMT'),
                       userid: 2
                     },
                     {
@@ -56,7 +56,7 @@ tape("get user name by  id ", t => {
                       userid: 3
                     }
                   ]
-            t.deepEqual(result, expected, "get all  posts ");
+            t.deepEqual(result.content, expected.content, "get all  posts ");
             t.end();
     
         }

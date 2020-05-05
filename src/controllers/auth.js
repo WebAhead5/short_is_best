@@ -17,10 +17,12 @@ exports.registerPage = (req, res) => {
 // hash the password, then add the new user to our database using the v addNewUser method
 // make sure to handle any error that might occured
 exports.addUser =  (req, res, err) => {
-  var username = req.body.username;
+  var email = req.body.email;
   var password = req.body.password;
+  var name = req.body.name;
+  var admin = req.body.admin;
   var confirmPassword = req.body.confirmPassword;
-  if(username.length == 0 || password.length == 0 || confirmPassword.length ==0){
+  if(email.length == 0 || password.length == 0 || confirmPassword.length ==0){
     res.render('register', { error: 'one of the fields is empty'});
     return;
   }
@@ -36,7 +38,7 @@ exports.addUser =  (req, res, err) => {
     }
     // Store hash in your password DB.
     try{
-      await addNewUser(username,hash);
+      await addNewUser(email,hash,name,admin);
       res.redirect('/');
     }catch(e){
       res.render('register',{error: e.message});
