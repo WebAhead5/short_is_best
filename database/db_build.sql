@@ -4,8 +4,8 @@ DROP TABLE IF EXISTS users, Posts, Comments CASCADE;
 CREATE TABLE users (
 userid SERIAL PRIMARY KEY,
 email VARCHAR (30)  UNIQUE NOT NULL,
-password VARCHAR (20) NOT NULL,
-name VARCHAR (20)  NOT NULL,
+password VARCHAR (200) NOT NULL,
+name VARCHAR (30)  NOT NULL,
 admin boolean NOT NULL
 );
 
