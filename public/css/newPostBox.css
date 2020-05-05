@@ -10,9 +10,18 @@
 }
 
 .twitter.boxContainer {
-    width: 410px;
+    width: 550px;
     height: 180px;
     margin: 0 auto;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+}
+
+.twitter.commentsBoxContainer {
+    width: 100%;
+    height: 180px;
+    margin-left: -10px;
     text-align: center;
     border-radius: 5px;
     background-color: #FFFFFF;

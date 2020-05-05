@@ -14,9 +14,76 @@
     </div>
 
   </div>
+  <section>
 
 
- 
+    <div id="app" class="columns">
+      <div class="column">
+
+
+        {{#each ARRDATA}}
+            
+
+
+
+        <div class="tweet">
+          <div class="box">
+            <article class="media">
+              <div class="media-left">
+                <figure class="image is-64x64">
+                  <img :src="tweet.img" alt="Image">
+                </figure>
+              </div>
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong>{{tweet.name}}</strong> <small>{{tweet.handle}}</small>
+                    <i class="fas fa-trash" pull="left"></i>
+
+                    <br>
+                    {{tweet.tweet}}
+                  </p>
+                </div>
+                <div class="level-left">
+                  <a class="level-item">
+                    <span class="icon is-small"><i class="fas fa-heart"></i></span>
+                    <span class="likes">{{tweet.likes}}</span>
+                    <span class="icon is-small"><i class="far fa-comment"></i></span>
+                    </i>
+                    <span class="likes">{{tweet.commentsNumber}}</span>
+                  </a>
+                </div>
+
+
+
+
+                <div class="twitter commentsBoxContainer ">
+                  <label class="twitter tweetHeader">Compose new comment</label>
+                  <span class="close"></span>
+                  <div class="lineSplit"></div>
+                  <textarea class="messageBox" id="postMessage" placeholder="What's happening?"></textarea>
+
+                  <input type="button" class="postButton" id="submitPost" value="comite" />
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+
+ {{/each}}
+
+
+
+
+
+      </div>
+    </div>
+
+
+  </section>
+
+
 
 
 

@@ -1,14 +1,11 @@
 <section>
-    <div class="contentContainer">
 
-        <div class="twitter boxContainer">
-            <label class="twitter tweetHeader">Compose new Tweet</label>
-            <span class="close"></span>
-            <div class="lineSplit"></div>
-            <textarea class="messageBox" id="postMessage" placeholder="What's happening?"></textarea>
-            <label class="wordCounter" id="wordCounter">140</label>
-            <input type="button" class="postButton" id="submitPost" value="Tweet" />
+
+    <div id="app" class="columns">
+        <div class="column">
+            <tweet-component v-for="tweet in tweets" :tweet="tweet" />
         </div>
-
     </div>
+
+
 </section>
