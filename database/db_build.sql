@@ -36,7 +36,7 @@ insert into users (email, password, name, admin) values ('farid@gmail.com','1020
 insert into users (email, password, name, admin) values ('hadi@gmail.com','102030', 'hadi', 'true');
 
 
-insert into Posts (content, likes,  postdate,userid) values ('keep things short', 3,'2/5/2019', 1);
+insert into Posts (content, likes,  postdate,userid) values ('keep things short', 3,'5/2/2019 ', 1);
 insert into Posts (content, likes,  postdate,userid) values ('im addicted to Cola', 1, '1/3/2019', 2);
 insert into Posts (content, likes,  postdate,userid) values ('have a nice day', 2, '1/9/2019', 3);
 
