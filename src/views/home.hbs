@@ -1,8 +1,8 @@
 <section>
   {{#if signedIn}}
   <h1 class="main__title">Hello there, {{username}} <a href="/logout">To logout</a></h1>
-
-  <div class="contentContainer">
+{{!-- 
+  <div class="contentContainer"> --}}
 
     <div class="twitter boxContainer">
       <label class="twitter tweetHeader">Compose new Tweet</label>
@@ -11,53 +11,40 @@
       <textarea class="messageBox" id="postMessage" placeholder="What's happening?"></textarea>
       <label class="wordCounter" id="wordCounter">140</label>
       <input type="button" class="postButton" id="submitPost" value="Tweet" />
-    </div>
-
-  </div>
-  <section>
-
-
+    </div> 
+ 
     <div id="app" class="columns">
-      <div class="column">
+      <div class="column"> 
 
-
-        {{#each ARRDATA}}
-            
-
-
-
+        {{#each tweet}}
         <div class="tweet">
           <div class="box">
             <article class="media">
               <div class="media-left">
-                <figure class="image is-64x64">
-                  <img :src="tweet.img" alt="Image">
+                <figure >
+                  <img src={{this.img}} alt="Image">
                 </figure>
               </div>
               <div class="media-content">
                 <div class="content">
                   <p>
-                    <strong>{{tweet.name}}</strong> <small>{{tweet.handle}}</small>
-                    <i class="fas fa-trash" pull="left"></i>
-
+                    <strong>{{this.name}}</strong> <small>{{this.handle}}</small>
+                    <i class="icon-trash" float= "right"></i>
                     <br>
-                    {{tweet.tweet}}
+                    {{this.tweet}}
                   </p>
                 </div>
                 <div class="level-left">
                   <a class="level-item">
-                    <span class="icon is-small"><i class="fas fa-heart"></i></span>
-                    <span class="likes">{{tweet.likes}}</span>
-                    <span class="icon is-small"><i class="far fa-comment"></i></span>
+                    <span class="icon is-small"><i class="icon-heart" style=" color: red;" pull="left"></i></span>
+                    <span class="likes">{{this.likes}}</span>
+                    <span class="icon is-small"><i class="icon-comment"></i></span>
                     </i>
-                    <span class="likes">{{tweet.commentsNumber}}</span>
+                    <span class="likes">{{this.commentsNumber}}</span>
                   </a>
                 </div>
-
-
-
-
-                <div class="twitter commentsBoxContainer ">
+                
+                <div class="commentsBoxContainer ">
                   <label class="twitter tweetHeader">Compose new comment</label>
                   <span class="close"></span>
                   <div class="lineSplit"></div>
@@ -69,19 +56,10 @@
             </article>
           </div>
         </div>
-
-
- {{/each}}
-
-
-
-
-
+        {{/each}}
       </div>
     </div>
 
-
-  </section>
 
 
 

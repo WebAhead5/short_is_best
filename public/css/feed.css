@@ -16,7 +16,7 @@ body {
 }
 
 #app .tweet {
-    max-width: 500px;
+    max-width: 550px;
     margin: 0 auto;
     padding-bottom: 15px;
 }
@@ -24,6 +24,16 @@ body {
 #app .box {
     margin-bottom: 0;
     border-radius: 0;
+    background: whitesmoke;
+}
+
+.twitter.commentsBoxContainer {
+    width: 420px;
+    height: 180px;
+    margin-left: -10px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: rgba(245, 245, 245, 0.973);
 }
 
 #app .content small {
@@ -32,25 +42,29 @@ body {
 
 #app img {
     border-radius: 30px;
+    width: 64px;
+    height: 64px;
+    float: left;
 }
 
+
+}
 #app .level-item {
     padding-left: 10px;
     color: #00d1b2;
 }
-
 #app input:focus {
     border-color: #00d1b2;
 }
-
 #app .likes {
     padding: 0 7.5px;
 }
-
 #app input {
     font-weight: bold;
 }
-
 #app .tweets-move {
     transition: transform 1s;
+}
+#app .icon-trash {
+    float: right;
 }
