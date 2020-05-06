@@ -34,6 +34,14 @@ exports.getallposts = () => {
   })
 }
 
+exports.addlikes= (postid,likes) =>{
+return new Promise((resolve,reject)=>{
+  var arr= [likes,postid]
+  db.query('UPDATE  posts SET likes=$1  where postid=$2;',arr)
+  .then(()=> resolve('like was added')).catch((e) => console.log("error in likes" +e))
+})
+}
+
 
 
 
