@@ -9,22 +9,15 @@ const checkIfUserExists = (username) =>
 /**
  * @param  {string} username
  */
-exports.findByUsername = (username) =>
-  new Promise((resolve, reject) =>
-    db
-      .query('SELECT * FROM users WHERE username = $1', username)
-      .then((user) => {
-        if (!user.length) {
-          reject(new Error('No user was found'));
-        }
 
-        resolve(user[0]);
-      })
-      .catch((error) => {
-        console.log(`findByUsername Error: ${error}`);
-        reject(new Error('An error has occurred in the db, findByUsername'));
-      })
-  );
+  exports.findByUsername=(username)=>{
+    return new Promise((resolve, reject) => {
+      db.query('SELECT * FROM users WHERE name = $1', [username])
+      .then((userdata) => resolve(userdata,'find specific user'),).catch((e) => console.log("Error in finding users data " + e));
+
+
+  })}
+
 
 /**
  * @param  {string} username
@@ -64,3 +57,12 @@ exports.addNewUser = async (email, password, name, admin) => {
   }
   )
 };
+
+exports.getallusers = async () => {
+  return new Promise((resolve, reject) => {
+    // EXISTS returns the following [ { exists: BOOLEAN } ]
+    db.query('SELECT * FROM users')
+    .then((users) => resolve(users,'show all users'),).catch((e) => console.log("Error in show all users " + e));
+
+  })};
+
