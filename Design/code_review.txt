@@ -1,0 +1,25 @@
+Login  - v
+Register - v
+GetPosts - v
+AddPost - v
+Logout -v
+
+
+AddComment - X
+GetComments - X
+RemovePost - X
+
+
+
+--------------------
+Bugs
+Home page:
+	Hello {user name}
+	In Post:
+		username
+		pic
+		add like
+		change charcters counter while typing
+
+Block user for 24 hours.
+Session cookes login

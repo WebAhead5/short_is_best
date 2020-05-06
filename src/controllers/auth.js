@@ -5,10 +5,10 @@ const saltRounds = 10;
 const { findByUsername, addNewUser } = require('../models/users/User.model');
 
 exports.loginPage = (req, res) => {
-    res.render('login', { activePage: { login: true } });
+  res.render('login', { activePage: { login: true } });
 };
 exports.registerPage = (req, res) => {
-    res.render('register', { activePage: { register: true }, error: '' });
+  res.render('register', { activePage: { register: true }, error: '' });
 };
 
 // This function handles the POST /addUser route
@@ -17,33 +17,33 @@ exports.registerPage = (req, res) => {
 // hash the password, then add the new user to our database using the v addNewUser method
 // make sure to handle any error that might occured
 exports.addUser = (req, res, err) => {
-    var email = req.body.email;
-    var password = req.body.password;
-    var name = req.body.name;
-    var admin = req.body.admin;
-    var confirmPassword = req.body.confirmPassword;
-    if (email.length == 0 || password.length == 0 || confirmPassword.length == 0) {
-        res.render('register', { error: 'one of the fields is empty' });
-        return;
+  var email = req.body.email;
+  var password = req.body.password;
+  var name = req.body.name;
+  var admin = req.body.admin;
+  var confirmPassword = req.body.confirmPassword;
+  if (email.length == 0 || password.length == 0 || confirmPassword.length == 0) {
+    res.render('register', { error: 'one of the fields is empty' });
+    return;
+  }
+  if (password !== confirmPassword) {
+    //return new Error('Passwords not match');
+    res.render('register', { error: 'Passwords not match' });
+    return;
+  }
+  bcrypt.hash(password, saltRounds, async function (err, hash) {
+    if (err) {
+      res.render('register', { error: 'error in hashing' });
+      return;
     }
-    if (password !== confirmPassword) {
-        //return new Error('Passwords not match');
-        res.render('register', { error: 'Passwords not match' });
-        return;
+    // Store hash in your password DB.
+    try {
+      await addNewUser(email, hash, name, admin);
+      res.redirect('/');
+    } catch (e) {
+      res.render('register', { error: e.message });
     }
-    bcrypt.hash(password, saltRounds, async function(err, hash) {
-        if (err) {
-            res.render('register', { error: 'error in hashing' });
-            return;
-        }
-        // Store hash in your password DB.
-        try {
-            await addNewUser(email, hash, name, admin);
-            res.redirect('/');
-        } catch (e) {
-            res.render('register', { error: e.message });
-        }
-    });
+  });
 
 };
 
@@ -53,37 +53,66 @@ exports.addUser = (req, res, err) => {
 // using bcrypt and then redirects back to the home page 
 // make sure to look at home.hbs file to be able to modify the home page when user is logged in
 // also handle all possible errors that might occured by sending a message back to the cleint
-exports.authenticate = async(req, res) => {
-    var username = req.body.username;
-    var password = req.body.password;
-    try {
-        var user = await findByUsername(username);
-        bcrypt.compare(password, user.password, function(err, result) {
-            if (err) {
-                res.render('login', { error: err.message });
-            }
-            if (result == true) {
-                jwt.sign(user.username, process.env.JWT_SECRET, function(err, token) {
-                    if (err) {
-                        res.render('login', { error: err.message });
-                    }
-                    console.log(token)
-                    res.cookie('access_token', token);
-                    res.redirect('/');
-                });
+exports.authenticate = async (req, res) => {
+  var username = req.body.username;
+  var password = req.body.password;
+  try {
+    var user = await findByUsername(username);
+    bcrypt.compare(password, user.password, function (err, result) {
+      if (err) {
+        res.render('login', { error: err.message });
+      }
+      if (result == true) {
+        jwt.sign(user.email, process.env.JWT_SECRET, function (err, token) {
+          if (err) {
+            return res.render('login', { error: err.message });
+          }
+          console.log(token)
+          res.cookie('access_token', token);
+          
+          const tweet = [{
+            postid: 1,
+            name: 'James',
+            handle: '@jokerjames',
+            img: 'https://semantic-ui.com/images/avatar2/large/matthew.png',
+            content: "If you don't succeed, dust yourself off and try again.",
+            likes: 10,
+            postdate: "20-01-2010"
 
-            } else {
-                res.render('login', { error: "username or password not corect" });
-            }
+          },
+          {
+
+            postid: 2,
+            name: 'Fatima',
+            handle: '@fantasticfatima',
+            img: 'https://semantic-ui.com/images/avatar2/large/molly.png',
+            tweet: 'Better late than never but never late is better.',
+            likes: 12,
+          },
+          {
+            id: 3,
+            name: 'Xin',
+            handle: '@xeroxin',
+            img: 'https://semantic-ui.com/images/avatar2/large/elyse.png',
+            tweet: 'Beauty in the struggle, ugliness in the success.',
+            likes: 18,
+          }
+          ]
+          res.render('home', { signedIn: true, tweet: tweet });
         });
-    } catch (e) {
-        console.log(e.message);
-        res.render('login', { error: e.message });
-    }
+
+      } else {
+        res.render('login', { error: "username or password not corect" });
+      }
+    });
+  } catch (e) {
+    console.log(e.message);
+    res.render('login', { error: e.message });
+  }
 };
 
 
 exports.logout = (req, res) => {
-    res.clearCookie('access_token');
-    res.redirect('/');
+  res.clearCookie('access_token');
+  res.redirect('/');
 }

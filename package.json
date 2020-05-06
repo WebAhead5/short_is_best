@@ -4,10 +4,10 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "node src/index.js",
-        "dev": "nodemon src/index.js",
-        "test": " tape src/test/router.js | tap-spec",
-        "dbtest": "node database/test.js | tap-spec"
+        "start": "NODE_ENV=production node src/index.js",
+        "dev": "NODE_ENV=dev nodemon src/index.js",
+        "test": "NODE_ENV=dev tape src/test/router.js | tap-spec",
+        "dbtest": "NODE_ENV=dev node database/test.js | tap-spec"
     },
     "author": "",
     "license": "ISC",
