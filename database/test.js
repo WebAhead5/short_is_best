@@ -19,11 +19,13 @@ tape("tape is working", t => {
 tape("findByUsername ", t => {
     runDbBuild(function (err, res) {
         t.error(err, "No Error in DB creation"); //Assert that db_build finished successfully with no errors
-        expected = []
+        expected = {email :'amirfahoum@gmail.com',password:'102030', name:'Amir',admin: false}
 
         try {
-            const oldusersnum = findByUsername('Amir').then((data) => {
-                t.deepEqual(data.rows, expected, 'check if added new user')
+            const oldusersnum = findByUsername('amirfahoum@gmail.com').then((user) => {
+                var userWithoutId = user;
+                delete userWithoutId.userid;
+                t.deepEqual(userWithoutId, expected, 'check if added new user')
                 t.end();
             });
         } catch (e) {
