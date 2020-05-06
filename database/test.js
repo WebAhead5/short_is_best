@@ -1,6 +1,6 @@
 const tape = require("tape");
 const { findByUsername, addNewUser, getallusers } = require('../src/models/users/User.model')
-const { addNewPost, removepost, getposts, getallposts } = require('../src/models/posts/Post.model')
+const { addNewPost, removepost, getposts, getallposts,addlikes } = require('../src/models/posts/Post.model')
 const { addcomment, removecomments, removecomment, getcomments } = require('../src/models/comments/Comments.model')
 
 const runDbBuild = require("./db_build");//not clear
@@ -19,6 +19,7 @@ tape("tape is working", t => {
 tape("findByUsername ", t => {
     runDbBuild(function (err, res) {
         t.error(err, "No Error in DB creation"); //Assert that db_build finished successfully with no errors
+
         expected = {email :'amirfahoum@gmail.com',password:'102030', name:'Amir',admin: false}
 
         try {
@@ -147,6 +148,29 @@ tape('remove specific comment from post', t => {
             db.query('SELECT * FROM comments WHERE id = $1', [1])
                 .then((comment) => {
                     t.equal(comment.rows.length, 0, 'delete comment success')
+                    t.end();
+                })
+                .catch((error) => {
+                    t.equal(1, 2, "error problem with deleting comment" + error)
+                    t.end();
+                })
+        }
+        catch (e) {
+            console.log(e);
+            t.equal(1, 2, "error problem with deleting comments" + error)
+            t.end();
+        }
+    })
+})
+
+tape('add likes', t => {
+    runDbBuild( async function (err, res) {
+        t.error(err, "No Error in DB creation"); //Assert that db_build finished successfully with no errors
+        try {
+            await addlikes(1,3)
+            db.query('SELECT likes FROM posts WHERE postid = $1', [1])
+                .then((likes) => {
+                    t.equal(likes.rows[0].likes, 3, 'delete comment success')
                     t.end();
                 })
                 .catch((error) => {
