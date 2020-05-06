@@ -6,8 +6,8 @@
     <label class="twitter tweetHeader">Compose new Tweet</label>
     <span class="close"></span>
     <div class="lineSplit"></div>
-    <textarea class="messageBox" id="postMessage" placeholder="What's happening?"></textarea>
-    <label class="wordCounter" id="wordCounter">140</label>
+    <textarea onkeydown="countDown()"" class="messageBox" id="postMessage" placeholder="Whats happening?"></textarea>
+    <p class="wordCounter" id="wordCounter">140</p>
     <input type="button" class="postButton" id="submitPost" value="Tweet" />
   </div>
 

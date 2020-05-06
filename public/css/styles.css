@@ -42,29 +42,24 @@ button.ghost {
     margin: auto;
 }
 
-.formhome {
-    background-color: #FFFFFF;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding-left: 100px;
-    height: 100%;
-    width: 100%;
-    text-align: center;
-    position: absolute;
-}
-
 .form-container {
     position: absolute;
     top: 0;
     height: 100%;
 }
 
-.sign-in-container {
-    left: 0;
-    width: 50%;
-    z-index: 2;
+.formhome {
+    position: relative;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    left: 50%;
+    bottom: 50%;
 }
 
 .overlay-container {
