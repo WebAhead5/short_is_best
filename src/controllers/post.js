@@ -1,4 +1,6 @@
-const { deletePost,addNewPost } = require('../models/posts/Post.model');
+const { getallposts,deletePost,addNewPost } = require('../models/posts/Post.model');
+
+var posts = []; 
 
 // This function handles the POST /newPost route
 // checks if the content and user are exisits if not send back 
@@ -6,8 +8,8 @@ const { deletePost,addNewPost } = require('../models/posts/Post.model');
 // Then add the new post to our database using the v addNewPost method
 // make sure to handle any error that might occured
 exports.addPost = async (req, res, err) => {
+ 
   var content = req.body.content;
-
   if (content.length == 0) {
     res.render('home');
     return;
@@ -17,8 +19,8 @@ exports.addPost = async (req, res, err) => {
 
   // Store post in DB.
   try {
-    await addNewPost(postId, content);
-    res.redirect('/');
+    await addNewPost(content,0,"22-01-2020",1);
+    res.redirect('/getPosts');
   } catch (e) {
     res.render('home', { error: e.message });
   }
@@ -74,3 +76,25 @@ exports.addLike =  async (req, res, err) => {
   
 };
 
+
+// This function handles the Post /addLike route
+// checks if the posti d exisits if not send back 
+// a proper error message
+// Then add like to the post from our database using the v addLikeToPost method
+// make sure to handle any error that might occured
+exports.getPosts =  async (req, res, err) => {
+  try {
+    posts = await getallposts();
+    console.log(JSON.stringify(posts));
+    var result = posts.map(function(el) {
+      var o = Object.assign({}, el);
+      o.handle = '@jokerjames';
+      o.img = 'https://semantic-ui.com/images/avatar2/large/matthew.png';
+      return o;
+    })
+    res.render('home', { signedIn: true, tweet: result });
+  } catch (e) {
+    res.render('home', { error: e.message });
+  }
+  
+};

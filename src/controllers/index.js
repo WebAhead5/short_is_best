@@ -21,6 +21,7 @@ router.post('/newPost', post.addPost);
 router.delete('/removePost', post.removePost);
 router.post('/newComment', comment.addComment);
 router.post('/newLike', post.addLike);
+router.get('/getPosts',post.getPosts);
 router.use(error.client);
 router.use(error.server);
 

@@ -29,8 +29,8 @@ exports.removepost =  (postid) => {
 
 exports.getallposts = () => {
   return new Promise((resolve, reject) => {
-    db.query('select * from posts; ')
-      .then((posts) => resolve(posts, 'show all comments')).catch((e) => console.log("Error in add  comment " + e));
+    db.query('select * from posts ORDER BY postid DESC; ')
+      .then((posts) => resolve(posts.rows)).catch((e) => console.log("Error in add  comment " + e));
   })
 }
 

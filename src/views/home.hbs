@@ -1,14 +1,16 @@
 <section>
   {{#if signedIn}}
   <h1>Hello there, {{username}} <a href="/logout">To logout</a></h1>
-  
+
   <div class="twitter boxContainer">
-    <label class="twitter tweetHeader">Compose new Tweet</label>
-    <span class="close"></span>
-    <div class="lineSplit"></div>
-    <textarea class="messageBox" id="postMessage" placeholder="What's happening?"></textarea>
-    <label class="wordCounter" id="wordCounter">140</label>
-    <input type="button" class="postButton" id="submitPost" value="Tweet" />
+    <form action="/newPost" method="POST">
+      <label class="twitter tweetHeader">Compose new Tweet</label>
+      <span class="close"></span>
+      <div class="lineSplit"></div>
+      <textarea name="content" class="messageBox" id="postMessage" placeholder="What's happening?"></textarea>
+      <label class="wordCounter" id="wordCounter">140</label>
+      <input type="submit" class="postButton" id="submitPost" value="Tweet" />
+    </form>
   </div>
 
   <div id="app" class="columns">
@@ -60,8 +62,8 @@
                   </p>
                 </div>
                 {{/each}}
-               </div>
               </div>
+            </div>
           </article>
         </div>
       </div>
@@ -77,28 +79,28 @@
   {{else}}
 
 
-<div class="homeIfNot">
-<div class="homeContainer" >
-	
-	<div class="form-container ">
-		<form class="formhome">
-			<h1>Sign in</h1>
-			<button>Sign In</button>
-	</div>
-	<div class="overlay-container">
-		<div class="overlay">
-			<div>
-				<button class="ghost" id="signIn">Sign In</button>
-			</div>
-			<div class="overlay-panel overlay-right">
-				<h1>Hello, Friend!</h1>
-				<p>Press to enter your personal details and start journey with us</p>
-				<button class="ghost" id="signUp">Sign Up</button>
-			</div>
-		</div>
-	</div>
+  <div class="homeIfNot">
+    <div class="homeContainer">
+
+      <div class="form-container ">
+        <form class="formhome">
+          <h1>Sign in</h1>
+          <button>Sign In</button>
+      </div>
+      <div class="overlay-container">
+        <div class="overlay">
+          <div>
+            <button class="ghost" id="signIn">Sign In</button>
+          </div>
+          <div class="overlay-panel overlay-right">
+            <h1>Hello, Friend!</h1>
+            <p>Press to enter your personal details and start journey with us</p>
+            <button class="ghost" id="signUp">Sign Up</button>
+          </div>
+        </div>
+      </div>
 
 
 
-  {{/if}}
+      {{/if}}
 </section>
