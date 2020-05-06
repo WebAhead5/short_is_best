@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { validateNewUser, loginLogger } = require('../middlewares');
-//const { findByUsername, addNewUser } = require('../models/users/User.model');
+const { findByUsername, addNewUser } = require('../models/users/User.model');
 
 const home = require('./home');
 const auth = require('./auth');

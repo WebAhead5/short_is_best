@@ -1,27 +1,102 @@
 <section>
   {{#if signedIn}}
-  <h1 class="main__title">Hello there, {{username}} <a href="/logout">To logout</a></h1>
+  <h1>Hello there, {{username}} <a href="/logout">To logout</a></h1>
+  
+  <div class="twitter boxContainer">
+    <label class="twitter tweetHeader">Compose new Tweet</label>
+    <span class="close"></span>
+    <div class="lineSplit"></div>
+    <textarea class="messageBox" id="postMessage" placeholder="What's happening?"></textarea>
+    <label class="wordCounter" id="wordCounter">140</label>
+    <input type="button" class="postButton" id="submitPost" value="Tweet" />
+  </div>
 
-  <div class="contentContainer">
+  <div id="app" class="columns">
+    <div class="column">
 
-    <div class="twitter boxContainer">
-      <label class="twitter tweetHeader">Compose new Tweet</label>
-      <span class="close"></span>
-      <div class="lineSplit"></div>
-      <textarea class="messageBox" id="postMessage" placeholder="What's happening?"></textarea>
-      <label class="wordCounter" id="wordCounter">140</label>
-      <input type="button" class="postButton" id="submitPost" value="Tweet" />
+      {{#each tweet}}
+      <div class="tweet">
+        <div class="box">
+          <article class="media">
+            <div class="media-left">
+              <figure>
+                <img src={{this.img}} alt="Image">
+              </figure>
+            </div>
+            <div>
+              <div class="content">
+                <p>
+                  <strong>{{this.name}}</strong> <small>{{this.handle}}</small>
+                  <i class="icon-trash" float="right"></i>
+                  <br>
+                  {{this.content}}
+                </p>
+              </div>
+              <div class="level-left">
+                <a class="level-item">
+                  <span class="icon is-small"><i class="icon-heart" style=" color: red;" pull="left"></i></span>
+                  <span class="likes">{{this.likes}}</span>
+                  <span class="icon is-small"><i onclick="openComments({{@index}})" class="icon-comment"></i></span>
+                  <span class="icon is-small"><i onclick="openComments({{@index}})" class="icon-chevron-down"
+                      style=" color: rgb(46, 8, 116);" pull="rigth"></i></span>
+                </a>
+              </div>
+              {{!-- this is commentsBoxContainer ------------------------- --}}
+              <div id="opencomments{{@index}}">
+                <div class="commentsBoxContainer ">
+                  <label class="twitter commentsTweetHeader">Compose new comment</label>
+                  <div class="lineSplit"></div>
+                  <textarea class="commentsMessageBox" id="postMessage" placeholder="What's happening?"></textarea>
+                  <input type="button" class="commentsPostButton" id="submitPost" value="Tweet" />
+                </div>
+                {{!-- comments body  --}}
+                {{#each comments}}
+                <div class="content">
+                  <p>
+                    <strong>{{this.userid}}</strong> <small>{{this.handle}}</small>
+                    <i class="icon-trash" float="right"></i>
+                    <br>
+                    {{this.comments}}
+                  </p>
+                </div>
+                {{/each}}
+               </div>
+              </div>
+          </article>
+        </div>
+      </div>
+      {{/each}}
     </div>
-
   </div>
 
 
- 
+
 
 
 
   {{else}}
-  <h1 class="main__title">Welcome to sort is best</h1>
+
+
+<div class="homeIfNot">
+<div class="homeContainer" >
+	
+	<div class="form-container ">
+		<form class="formhome">
+			<h1>Sign in</h1>
+			<button>Sign In</button>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div>
+				<button class="ghost" id="signIn">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, Friend!</h1>
+				<p>Press to enter your personal details and start journey with us</p>
+				<button class="ghost" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div>
 
 
 
