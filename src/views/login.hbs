@@ -1,22 +1,11 @@
-<section>
-    <div class="container">
-        <div class="icon col s12"><img src="https://img.icons8.com/color/48/000000/twitter.png" /></div>
-        <h1>login</h1>
-        <div class="row">
-            <form class="col s12">
-                <div class="input-field">
-                    <input placeholder="" id="user" type="text" class="validate">
-                    <label for="user">email</label>
-                </div>
-                <div class="input-field">
-                    <input placeholder="" id="sifre" type="text" class="validate">
-                    <label for="sifre">password</label>
-                </div>
-                <a class="btn">login</a>
-            </form>
-            // <a href="" class="link1">Did you forget your password</a><span class="link1">.</span><a href="" class="link1">Twitter'a kaydol</a>
-        </div>
-    </div>
+<section class="main__container--limited-width">
+  <h1 class="main__title">LOGIN</h1>
 
-    {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> --}}
+  <form class="login__form" action="/authenticate" method="POST">
+    <input class="text-input" type="text" name="username" placeholder="Username">
+    <input class="text-input" type="password" name="password" placeholder="Password">
+    <input class="submit" type="submit" value="Submit">
+  </form>
+  <p id="error_mesage" class="error">{{error}}</p>
+
 </section>
