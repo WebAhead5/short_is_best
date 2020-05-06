@@ -8,7 +8,7 @@ const auth = require('./auth');
 const error = require('./error');
 const post = require('./post');
 const comment = require('./comment');
-const like = require('./like');
+
 
 // add home route
 router.get('/', home.get);
