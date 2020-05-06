@@ -1,6 +1,11 @@
-const runDbBuild = require("./db_build");//not clear
-const sqlFuncs = require("./queries");
 const tape = require("tape");
+const { findByUsername, addNewUser, getallusers } = require('../src/models/users/User.model')
+const { addNewPost, removepost, getposts, getallposts } = require('../src/models/posts/Post.model')
+const { addcomment, removecomments, removecomment, getcomments } = require('../src/models/comments/Comments.model')
+
+const runDbBuild = require("./db_build");//not clear
+const db = require('./db_connection');
+
 
 
 //=======================
@@ -11,131 +16,146 @@ tape("tape is working", t => {
 
 
 //===========================================
-tape("get user name by  id ", t => {
+tape("findByUsername ", t => {
     runDbBuild(function (err, res) {
         t.error(err, "No Error in DB creation"); //Assert that db_build finished successfully with no errors
-        sqlFuncs.getusername(2, (err, result) => {
-            if (err) console.log(err);
-            const expected =
-            [{
-                 name: 'farid'
-              }]
-        t.deepEqual(result, expected, "Returns expected user name");
-        t.end();
+        expected = []
 
-    }
-        )
-    })})
-//=========================================
-    tape("get all posts ", t => {
-        runDbBuild(function (err, res) {
-            t.error(err, "No Error in DB creation"); //Assert that db_build finished successfully with no errors
-            sqlFuncs.getposts((err, result) => {
-                if (err) console.log(err);
-                const expected =
-                [
-                    {
-                      postid: 1,
-                      content: 'keep things short',
-                      likes: 3,
-                      postdate: Date (2020,5,02,00,00,00),
-                      userid: 1
-                    },
-                    {
-                      postid: 2,
-                      content: 'im addicted to Cola',
-                      likes: 1,
-                      postdate:  Date('2019-01-03T00:00:00 GMT'),
-                      userid: 2
-                    },
-                    {
-                      postid: 3,
-                      content: 'have a nice day',
-                      likes: 2,
-                      postdate: new Date('2019-01-09T00:00:00 GMT'),
-                      userid: 3
-                    }
-                  ]
-            t.deepEqual(result.content, expected.content, "get all  posts ");
+        try {
+            const oldusersnum = findByUsername('Amir').then((data) => {
+                t.deepEqual(data.rows, expected, 'check if added new user')
+                t.end();
+            });
+        } catch (e) {
+            console.log(e);
+            t.equal(1, 2, "error problem with finding username" + err)
             t.end();
-    
         }
-            )
-        })
+
     })
-//=========================================
+})
 
-tape("get comments for postid ", t => {
-    runDbBuild(function (err, res) {
+const email = 'amir111@gmail.com'
+tape("add user", t => {
+    runDbBuild(async function (err, res) {
         t.error(err, "No Error in DB creation"); //Assert that db_build finished successfully with no errors
-        sqlFuncs.getcomments(1,(err, result) => {
-            console.log(result);
-            if (err) console.log(err);
-            const expected =[{ id: 1, content: 'hhhhhhh', postid: 1, userid: 2 }]
-            t.deepEqual(result, expected, "getting all comments a by postid ");
+
+
+        try {
+            const oldusersnum = await getallusers();
+            await addNewUser(email, '102030', 'amir', 'false')
+            const newusersnum = await getallusers();
+
+            t.equal(oldusersnum.rowCount + 1, newusersnum.rowCount, 'check if added new user')
             t.end();
-        })
+
+        } catch (e) {
+            console.log(e);
+            t.equal(1, 2, "error problem with users email" + error)
+            t.end();
+        }
+
+
     })
-});
+})
 
-//===============
-/*
-tape("addpost ", t => {
-    runDbBuild(function (err, res) {
+
+tape("add post", t => {
+    runDbBuild(async function (err, res) {
         t.error(err, "No Error in DB creation"); //Assert that db_build finished successfully with no errors
-        sqlFuncs.addpost("iam in love with f.b",'10.1.1994',2,(err, result) => {
-            console.log(result);
-            if (err) console.log(err);
-            const expected =[{ id: 2, content: "iam in love with f.b" , postdate: '10.1.1994'}]
-            t.deepEqual(result, expected, "all comments removed by postid ");
+        try {
+            const oldsize = await getallposts()
+            await addNewPost('11', 0, '05.05.2020', 1)
+            const updatedsize = await getallposts()
+            t.equal(oldsize.rowCount + 1, updatedsize.rowCount, 'check if added new post')
             t.end();
-        })
+        }
+        catch (e) {
+            console.log(e);
+            t.equal(1, 2, "error problem with users array size1" + error)
+            t.end();
+        }
+
     })
-});
-*/
-//add comment
-//add user
+})
 
 
-
-
-//====================
-//remove comments
-
-tape("remove post ", t => {
-    runDbBuild(function (err, res) {
+tape('delete posts', t => {
+    runDbBuild(async function (err, res) {
         t.error(err, "No Error in DB creation"); //Assert that db_build finished successfully with no errors
-        sqlFuncs.removepost(2, (err, result) => {
-            if (err) console.log(err);
-            const expected =
-            []
-        t.deepEqual(result, expected, "Returns expected user name");
-        t.end();
-
-    }
-        )
-    })})
-
-
-
-    tape("remove comment  ", t => {
-        runDbBuild(function (err, res) {
-            t.error(err, "No Error in DB creation"); //Assert that db_build finished successfully with no errors
-            sqlFuncs.removecomment(1, (err, result) => {
-                if (err) console.log(err);
-                const expected =[]
-            t.deepEqual(result, expected, "Returns expected user name");
+        try {
+            await removepost(4)
+        }
+        catch (e) {
+            console.log(e);
+            t.equal(1, 2, "error problem with deleting post" + error)
             t.end();
-    
-        } )
-        })});
-    
+        }
+        db.query('SELECT * FROM posts')
+            .then((post) => {
+                t.equal(post.rowCount, 3, 'number of posts =equal after resolve')
+                t.end()
+            })
+    })
+})
 
 
+tape('add comment to a post', t => {
+    runDbBuild(async function (err, res) {
+        t.error(err, "No Error in DB creation"); //Assert that db_build finished successfully with no errors
+        try {
+            const oldcomments = await getcomments(1)
+            await addcomment('hhhhh d7ok', 1, 1)
+            const getupdatecomments = await getcomments(1)
+            t.equal(oldcomments.rowCount + 1, getupdatecomments.rowCount, 'number of comments correct after adding new comment')
+            t.end()
 
+        }
+        catch (e) {
+            console.log(e);
+            t.equal(1, 2, "error problem with adding comment" + error)
+            t.end();
+        }
+    })
+})
 
+tape('remove all comments from post', t => {
+    runDbBuild(async function (err, res) {
+        t.error(err, "No Error in DB creation"); //Assert that db_build finished successfully with no errors
+        try {
+            await removecomments(1)
+            const getupdatecomments = await getcomments(1)
+            t.equal(0, getupdatecomments.rowCount, 'number of commentsshould be =0')
+            t.end()
 
+        }
+        catch (e) {
+            console.log(e);
+            t.equal(1, 2, "error problem with deleting comments" + error)
+            t.end();
+        }
+    })
+})
 
-
-
-
+tape('remove specific comment from post', t => {
+    runDbBuild(async function (err, res) {
+        t.error(err, "No Error in DB creation"); //Assert that db_build finished successfully with no errors
+        try {
+            await removecomment(1)
+            db.query('SELECT * FROM comments WHERE id = $1', [1])
+                .then((comment) => {
+                    t.equal(comment.rows.length, 0, 'delete comment success')
+                    t.end();
+                })
+                .catch((error) => {
+                    t.equal(1, 2, "error problem with deleting comment" + error)
+                    t.end();
+                })
+        }
+        catch (e) {
+            console.log(e);
+            t.equal(1, 2, "error problem with deleting comments" + error)
+            t.end();
+        }
+    })
+})

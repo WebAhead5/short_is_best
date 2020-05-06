@@ -25,6 +25,7 @@ exports.findByUsername = (email) => {
       })
   );
 }
+
 /**
  * @param  {string} username
  * @param  {string} password
@@ -61,3 +62,12 @@ exports.addNewUser = async (email, password, name, admin) => {
   }
   )
 };
+
+exports.getallusers = async () => {
+  return new Promise((resolve, reject) => {
+    // EXISTS returns the following [ { exists: BOOLEAN } ]
+    db.query('SELECT * FROM users')
+    .then((users) => resolve(users,'show all users'),).catch((e) => console.log("Error in show all users " + e));
+
+  })};
+
