@@ -25,7 +25,7 @@
                   <img src={{this.img}} alt="Image">
                 </figure>
               </div>
-              <div class="media-content">
+              <div>
                 <div class="content">
                   <p>
                     <strong>{{this.name}}</strong> <small>{{this.handle}}</small>
@@ -45,12 +45,11 @@
                 </div>
                 
                 <div class="commentsBoxContainer ">
-                  <label class="twitter tweetHeader">Compose new comment</label>
-                  <span class="close"></span>
+                  <label class="twitter commentsTweetHeader">Compose new comment</label>
+                  
                   <div class="lineSplit"></div>
-                  <textarea class="messageBox" id="postMessage" placeholder="What's happening?"></textarea>
-
-                  <input type="button" class="postButton" id="submitPost" value="comite" />
+                  <textarea class="commentsMessageBox" id="postMessage" placeholder="What's happening?"></textarea>
+                  <input type="button" class="commentsPostButton" id="submitPost" value="Tweet" />
                 </div>
               </div>
             </article>

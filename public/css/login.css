@@ -18,7 +18,7 @@ h1 {
 }
 
 .input-field input {
-    margin: 0 !important;
+    margin: auto !important;
     border-bottom: 2px solid rgb(101, 119, 134) !important;
     height: 50px !important;
 }
@@ -28,8 +28,8 @@ h1 {
 
 .input-field label {
     color: rgb(101, 119, 134) !important;
-    margin: 15px 0 0 4px !important;
-    font-size: 18px !important;
+    margin-top: -10px !important;
+    font-size: 14px !important;
 }
 
 
@@ -43,8 +43,8 @@ h1 {
 /* label underline focus color */
 
 .input-field input[type=text]:focus {
-    border-bottom: 2px solid rgb(29, 161, 242) !important;
-    box-shadow: 0 1px 0 0 rgb(29, 161, 242) !important;
+    bordedr-bottom: 2px solid rgb(74, 165, 97) !important;
+    box-shadow: 0 1px 0 0 rgb(130, 199, 245) !important;
 }
 
 .btn {
@@ -60,13 +60,4 @@ h1 {
 
 .btn:hover {
     background-color: rgb(29, 161, 242) !important;
-}
-
-.link1 {
-    color: rgb(29, 161, 242);
-}
-
-span {
-    margin: 0 5px;
-    text-align: center;
 }
