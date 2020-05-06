@@ -1,16 +1,17 @@
 const jwt = require('jsonwebtoken');
 const tweet = [{
-        id: 1,
+        postid: 1,
         name: 'James',
         handle: '@jokerjames',
         img: 'https://semantic-ui.com/images/avatar2/large/matthew.png',
-        tweet: "If you don't succeed, dust yourself off and try again.",
+        content: "If you don't succeed, dust yourself off and try again.",
         likes: 10,
-        commentsNumber: 2,
-        comments: "ho la la"
+        postdate: "20-01-2010"
+
     },
     {
-        id: 2,
+
+        postid: 2,
         name: 'Fatima',
         handle: '@fantasticfatima',
         img: 'https://semantic-ui.com/images/avatar2/large/molly.png',
@@ -28,8 +29,25 @@ const tweet = [{
 ]
 
 
-
-
+const comments = [{
+        id: 1,
+        content: 'James',
+        postid: 1,
+        userid: 1
+    },
+    {
+        id: 2,
+        content: 'James',
+        postid: 1,
+        userid: 1
+    },
+    {
+        id: 2,
+        content: 'James',
+        postid: 3,
+        userid: 1
+    }
+]
 
 exports.get = (req, res) => {
     if (res.locals.user) {

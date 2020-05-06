@@ -1,63 +1,75 @@
 <section>
   {{#if signedIn}}
   <h1 class="main__title">Hello there, {{username}} <a href="/logout">To logout</a></h1>
-{{!-- 
+  {{!-- 
   <div class="contentContainer"> --}}
 
-    <div class="twitter boxContainer">
-      <label class="twitter tweetHeader">Compose new Tweet</label>
-      <span class="close"></span>
-      <div class="lineSplit"></div>
-      <textarea class="messageBox" id="postMessage" placeholder="What's happening?"></textarea>
-      <label class="wordCounter" id="wordCounter">140</label>
-      <input type="button" class="postButton" id="submitPost" value="Tweet" />
-    </div> 
- 
-    <div id="app" class="columns">
-      <div class="column"> 
+  <div class="twitter boxContainer">
+    <label class="twitter tweetHeader">Compose new Tweet</label>
+    <span class="close"></span>
+    <div class="lineSplit"></div>
+    <textarea class="messageBox" id="postMessage" placeholder="What's happening?"></textarea>
+    <label class="wordCounter" id="wordCounter">140</label>
+    <input type="button" class="postButton" id="submitPost" value="Tweet" />
+  </div>
 
-        {{#each tweet}}
-        <div class="tweet">
-          <div class="box">
-            <article class="media">
-              <div class="media-left">
-                <figure >
-                  <img src={{this.img}} alt="Image">
-                </figure>
+  <div id="app" class="columns">
+    <div class="column">
+
+      {{#each tweet}}
+      <div class="tweet">
+        <div class="box">
+          <article class="media">
+            <div class="media-left">
+              <figure>
+                <img src={{this.img}} alt="Image">
+              </figure>
+            </div>
+            <div>
+              <div class="content">
+                <p>
+                  <strong>{{this.name}}</strong> <small>{{this.handle}}</small>
+                  <i class="icon-trash" float="right"></i>
+                  <br>
+                  {{this.content}}
+                </p>
               </div>
-              <div>
-                <div class="content">
-                  <p>
-                    <strong>{{this.name}}</strong> <small>{{this.handle}}</small>
-                    <i class="icon-trash" float= "right"></i>
-                    <br>
-                    {{this.tweet}}
-                  </p>
-                </div>
-                <div class="level-left">
-                  <a class="level-item">
-                    <span class="icon is-small"><i class="icon-heart" style=" color: red;" pull="left"></i></span>
-                    <span class="likes">{{this.likes}}</span>
-                    <span class="icon is-small"><i class="icon-comment"></i></span>
-                    </i>
-                    <span class="likes">{{this.commentsNumber}}</span>
-                  </a>
-                </div>
-                
+              <div class="level-left">
+                <a class="level-item">
+                  <span class="icon is-small"><i class="icon-heart" style=" color: red;" pull="left"></i></span>
+                  <span class="likes">{{this.likes}}</span>
+                  <span class="icon is-small"><i onclick="openComments({{@index}})" class="icon-comment"></i></span>
+                  <span class="icon is-small"><i onclick="openComments({{@index}})" class="icon-chevron-down"
+                      style=" color: rgb(46, 8, 116);" pull="rigth"></i></span>
+                </a>
+              </div>
+              {{!-- this is commentsBoxContainer ------------------------- --}}
+              <div id="opencomments{{@index}}">
                 <div class="commentsBoxContainer ">
                   <label class="twitter commentsTweetHeader">Compose new comment</label>
-                  
                   <div class="lineSplit"></div>
                   <textarea class="commentsMessageBox" id="postMessage" placeholder="What's happening?"></textarea>
                   <input type="button" class="commentsPostButton" id="submitPost" value="Tweet" />
                 </div>
+                {{!-- comments body  --}}
+                {{#each comments}}
+                <div class="content">
+                  <p>
+                    <strong>{{this.userid}}</strong> <small>{{this.handle}}</small>
+                    <i class="icon-trash" float="right"></i>
+                    <br>
+                    {{this.comments}}
+                  </p>
+                </div>
+                {{/each}}
+               </div>
               </div>
-            </article>
-          </div>
+          </article>
         </div>
-        {{/each}}
       </div>
+      {{/each}}
     </div>
+  </div>
 
 
 

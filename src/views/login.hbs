@@ -2,17 +2,19 @@
     <div class="container">
         <div class="icon col s12"><img src="https://img.icons8.com/color/48/000000/twitter.png" /></div>
         <h1>login</h1>
+
         <div>
-            <form>
+            <form class="login__form" action="/authenticate" method="POST">
                 <div class="input-field">
-                    <input placeholder="" id="user" type="text" class="validate">
-                    <label for="user">email</label>
+                    <input placeholder="" id="user" type="text" name="username" >
+                    <label for="user">username</label>
                 </div>
                 <div class="input-field">
-                    <input placeholder="" id="password" type="text" class="validate">
-                    <label for="sifre">password</label>
+                    <input placeholder="" id="password" type="text" name="password" type="submit"  >
+                    <label >password</label>
                 </div>
                 <a class="btn">login</a>
+                <p id="error_mesage" class="error">{{error}}</p>
             </form>
         </div>
     </div>
