@@ -17,10 +17,10 @@ router.get('/register', auth.registerPage);
 router.post('/authenticate', auth.authenticate);
 router.post('/addUser', auth.addUser);
 router.get('/logout', auth.logout);
-router.post('/newPost', post.addNewPost);
-router.delete('/deletePost', post.removePost);
-router.post('/newComment', comment.addNewComment);
-router.post('/newLike', like.addNewLike);
+router.post('/newPost', post.addPost);
+router.delete('/removePost', post.removePost);
+router.post('/newComment', comment.addComment);
+router.post('/newLike', post.addLike);
 router.use(error.client);
 router.use(error.server);
 

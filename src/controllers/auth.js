@@ -63,9 +63,9 @@ exports.authenticate = async (req, res) => {
         res.render('login',{error: err.message});
       }
       if(result == true){
-        jwt.sign(user.username, process.env.JWT_SECRET, function(err, token) {
+        jwt.sign(user.email, process.env.JWT_SECRET, function(err, token) {
           if (err) {
-            res.render('login',{error: err.message});
+            return res.render('login',{error: err.message});
           }
           console.log(token)
           res.cookie('access_token', token);
