@@ -7,35 +7,32 @@ const checkIfUserExists = (username) =>
   !!db.users.filter((user) => user.username === username).length;
 
 /**
- * @param  {string} username
+ * @param  {string} email
  */
-exports.findByUsername = (username) =>
-  new Promise((resolve, reject) =>
+exports.findByUsername = (email) => {
+  return new Promise((resolve, reject) =>
     db
-      .query('SELECT * FROM users WHERE username = $1', username)
+      .query('SELECT * FROM users WHERE email = $1', [email])
       .then((user) => {
-        if (!user.length) {
+        if (!user.rows.length) {
           reject(new Error('No user was found'));
         }
-
-        resolve(user[0]);
+        resolve(user.rows[0]);
       })
       .catch((error) => {
         console.log(`findByUsername Error: ${error}`);
         reject(new Error('An error has occurred in the db, findByUsername'));
       })
   );
-
+}
 /**
  * @param  {string} username
  * @param  {string} password
  */
 exports.addNewUser = async (email, password, name, admin) => {
-
   return new Promise((resolve, reject) => {
     // EXISTS returns the following [ { exists: BOOLEAN } ]
     db
-      //.query('SELECT EXISTS(SELECT 1 FROM users WHERE email = $1)', [email])
       .query('SELECT EXISTS(SELECT 1 FROM users WHERE email = $1)', [email])
       .then((exists) => {
         console.log(exists.rows[0].exists);
