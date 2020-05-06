@@ -53,7 +53,7 @@ exports.get = (req, res) => {
     if (res.locals.user) {
         res.render('home', { activePage: { home: true }, signedIn: true, tweet: tweet, username: res.locals.user });
     } else {
-        res.render('home', { activePage: { home: true }, signedIn: true, tweet: tweet });
+        res.render('home', { activePage: { home: true }, signedIn: false, tweet: tweet });
     }
 
 };

@@ -5,10 +5,10 @@ const saltRounds = 10;
 const { findByUsername, addNewUser } = require('../models/users/User.model');
 
 exports.loginPage = (req, res) => {
-    res.render('login', { activePage: { login: false } });
+    res.render('login', { activePage: { login: true } });
 };
 exports.registerPage = (req, res) => {
-    res.render('register', { activePage: { register: false }, error: '' });
+    res.render('register', { activePage: { register: true }, error: '' });
 };
 
 // This function handles the POST /addUser route
