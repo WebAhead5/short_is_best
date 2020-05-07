@@ -1,6 +1,6 @@
 # short_is_best
 
-Our project is a kind of twitter that limit user to twite onece a day only.
+Our project is a kind of twitter that limit user to twite once a day.
 
 <b>Content<b> :
 - Website Design
