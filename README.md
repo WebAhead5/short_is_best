@@ -10,7 +10,6 @@ A project for twiting...:seedling:
 
 - Server Design
 
-<b>website<b>:  wwww.asdas.com
 
 
 <b>Login<b> :
