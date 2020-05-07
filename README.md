@@ -45,7 +45,6 @@ the website contain 3 pages:
 
 <b>DataBase<b>
 
-	-------------------------
 Schema:
 ```
 Table 1: Users
