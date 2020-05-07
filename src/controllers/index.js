@@ -11,7 +11,7 @@ const comment = require('./comment');
 
 
 // add home route
-router.get('/', home.get);
+router.get('/',validateNewUser.validateNewUser, home.get);
 router.get('/login', auth.loginPage);
 router.get('/register', auth.registerPage);
 router.post('/authenticate', auth.authenticate);

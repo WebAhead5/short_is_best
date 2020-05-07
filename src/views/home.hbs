@@ -7,7 +7,7 @@
       <label class="twitter tweetHeader">Compose new Tweet</label>
       <span class="close"></span>
       <div class="lineSplit"></div>
-      <textarea onkeydown="countDown()" class="messageBox" id="postMessage" placeholder="Whats happening?"></textarea>
+      <textarea onkeydown="countDown()" name="content" class="messageBox" id="postMessage" placeholder="Whats happening?"></textarea>
       <label class="wordCounter" id="wordCounter">140</label>
       <input type="submit" class="postButton" id="submitPost" value="Tweet" />
     </form>
@@ -15,7 +15,6 @@
 
   <div id="app" class="columns">
     <div class="column">
-
       {{#each tweet}}
       <div class="tweet">
         <div class="box">

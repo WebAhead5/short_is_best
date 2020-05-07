@@ -6,6 +6,7 @@ exports.validateNewUser = (req ,res, next) => {
         return next();
        // res.send('No cookies');
     }
+ 
     var decoded = jwt.verify(cookies.access_token, process.env.JWT_SECRET);
     if(!decoded){
         return next();

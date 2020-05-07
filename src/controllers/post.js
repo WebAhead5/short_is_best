@@ -77,10 +77,9 @@ exports.addLike =  async (req, res, err) => {
 };
 
 
-// This function handles the Post /addLike route
-// checks if the posti d exisits if not send back 
+// This function handles the Get /getPosts route
+// and if error
 // a proper error message
-// Then add like to the post from our database using the v addLikeToPost method
 // make sure to handle any error that might occured
 exports.getPosts =  async (req, res, err) => {
   try {
