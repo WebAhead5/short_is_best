@@ -1,7 +1,7 @@
 # short_is_best
 
 
-A project for twiting:seedling:
+A project for twiting...:seedling:
 
 <b>Content<b> :
 - Website Design
@@ -14,32 +14,31 @@ A project for twiting:seedling:
 
 
 <b>Login<b> ,
-Username: farid@gmail.com
-  
-Password: 102030
+Username: farid@gmail.com   ,Password: 102030
 
+  
 <b>User Story<b>
 As a member of short_is_best :
 
--add twitt/post
+-add twits/post
 
 -view all posts/twits
 
--add comment on post
+-add comment on twits
 
--delete twit
+-delete twits
 
 
 
 <b>Website design<b>:
 the website contain 3 pages:
 	
-**register page///image 
+**register page:
  ![](https://github.com/WebAhead5/short_is_best/blob/amirBranch/Design/Screenshot%20from%202020-05-06%2020-41-27.png)
 
-**login page ///image
+**login page:
  ![](https://github.com/WebAhead5/short_is_best/blob/amirBranch/Design/Screenshot%20from%202020-05-06%2020-41-24.png)
-**home page ///image
+**home page:
  ![](https://github.com/WebAhead5/short_is_best/blob/amirBranch/Design/Screenshot%20from%202020-05-06%2020-41-17.png)
 
 
