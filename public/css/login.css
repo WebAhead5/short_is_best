@@ -12,9 +12,11 @@ h1 {
 }
 
 .input-field {
-    background-color: rgb(245, 248, 250) !important;
+    background-color: rgb(255, 255, 255) !important;
     padding: 0 !important;
     height: 50px !important;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
 }
 
 .input-field input {
@@ -43,7 +45,7 @@ h1 {
 /* label underline focus color */
 
 .input-field input[type=text]:focus {
-    bordedr-bottom: 2px solid rgb(74, 165, 97) !important;
+    bordedr-bottom: 2px solid rgb(0, 132, 180) !important;
     box-shadow: 0 1px 0 0 rgb(130, 199, 245) !important;
 }
 
@@ -51,11 +53,13 @@ h1 {
     height: 40px !important;
     width: 100% !important;
     padding-top: 3px !important;
-    background-color: rgb(29, 161, 242) !important;
+    background-color: rgb(105, 184, 233) !important;
     border-bottom-left-radius: 9999px !important;
     border-bottom-right-radius: 9999px !important;
     border-top-left-radius: 9999px !important;
     border-top-right-radius: 9999px !important;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 132, 180, 0.15);
+    ;
 }
 
 .btn:hover {
