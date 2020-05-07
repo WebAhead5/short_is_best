@@ -7,7 +7,7 @@
         "start": "node src/index.js",
         "dev": "NODE_ENV=dev nodemon src/index.js",
         "test": "NODE_ENV=dev tape src/test/router.js | tap-spec",
-        "dbtest": "NODE_ENV=dev node database/test.js | tap-spec"
+        "modelstest": "NODE_ENV=dev node src/models/test.js | tap-spec"
     },
     "author": "",
     "license": "ISC",

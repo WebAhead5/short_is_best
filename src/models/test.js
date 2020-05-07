@@ -1,10 +1,10 @@
 const tape = require("tape");
-const { findByUsername, addNewUser, getallusers } = require('../src/models/users/User.model')
-const { addNewPost, removepost, getposts, getallposts,addlikes } = require('../src/models/posts/Post.model')
-const { addcomment, removecomments, removecomment, getcomments } = require('../src/models/comments/Comments.model')
+const { findByUsername, addNewUser, getallusers } = require('./users/User.model')
+const { addNewPost, removepost, getposts, getallposts,addlikes } = require('./posts/Post.model')
+const { addcomment, removecomments, removecomment, getcomments } = require('./comments/Comments.model')
 
-const runDbBuild = require("./db_build");//not clear
-const db = require('./db_connection');
+const runDbBuild = require("../../database/db_build");//not clear
+const db = require('../../database/db_connection');
 
 
 
