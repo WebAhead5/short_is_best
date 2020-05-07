@@ -38,20 +38,18 @@ UI contain 3 pages:
 **home page:
  ![](https://github.com/WebAhead5/short_is_best/blob/amirBranch/Design/Screenshot%20from%202020-05-06%2020-41-17.png)
 
-<b>Server design<b>
-In the basic design we save the MVC model so we have three basic libraries
-	Views
-	Controllers
-	Models
+<b>Server design<b><br>
+In the basic design we save the MVC model so we have three basic libraries<br>
+	* Views<br>
+	* Controllers<br>
+	* Models<br>
 	
-In Addition we have meidlwares
-
-The server is express app that uses expresshandelpars.
-
-The login is cookeis passed.
-Passwords encrypted by bcrypt.
-Cookeies signed by jwt.
-Tests written for the models only 
+In Addition we have meidlwares<br>
+The server is express app that uses expresshandelpars.<br>
+The login is cookeis passed.<br>
+Passwords encrypted by bcrypt.<br>
+Cookeies signed by jwt.<br>
+Tests written for the models only<br> 
 
 <b>DataBase design<b>
 
