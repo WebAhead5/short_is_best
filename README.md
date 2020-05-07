@@ -1,7 +1,5 @@
 # short_is_best
 
- ![](https://github.com/WebAhead5/short_is_best/blob/amirBranch/Design/Screenshot%20from%202020-05-06%2020-41-17.png)
-
 
 A project for twiting:seedling:
 
@@ -37,10 +35,12 @@ As a member of short_is_best :
 the website contain 3 pages:
 	
 **register page///image 
+ ![](https://github.com/WebAhead5/short_is_best/blob/amirBranch/Design/Screenshot%20from%202020-05-06%2020-41-27.png)
 
 **login page ///image
-
+ ![](https://github.com/WebAhead5/short_is_best/blob/amirBranch/Design/Screenshot%20from%202020-05-06%2020-41-24.png)
 **home page ///image
+ ![](https://github.com/WebAhead5/short_is_best/blob/amirBranch/Design/Screenshot%20from%202020-05-06%2020-41-17.png)
 
 
 <b>DataBase<b>
