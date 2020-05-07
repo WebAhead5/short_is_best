@@ -1,7 +1,6 @@
 # short_is_best
 
-
-A project for twiting...:seedling:
+Our project is a kind of twitter that limit user to twite onece a day only.
 
 <b>Content<b> :
 - Website Design
@@ -9,9 +8,6 @@ A project for twiting...:seedling:
 - Database Design
 
 - Server Design
-
-<b>website<b>:  wwww.asdas.com
-
 
 <b>Login<b> :
 1) create new user on Register page.
@@ -27,12 +23,12 @@ As a member of short_is_best :
 
 -add comment on twits
 
--delete twits
+-delete my twits
 
 
 
 <b>Website design<b>:
-the website contain 3 pages:
+UI contain 3 pages:
 	
 **register page:
  ![](https://github.com/WebAhead5/short_is_best/blob/amirBranch/Design/Screenshot%20from%202020-05-06%2020-41-27.png)
@@ -42,8 +38,22 @@ the website contain 3 pages:
 **home page:
  ![](https://github.com/WebAhead5/short_is_best/blob/amirBranch/Design/Screenshot%20from%202020-05-06%2020-41-17.png)
 
+<b>Server design<b>
+In the basic design we save the MVC model so we have three basic libraries
+	Views
+	Controllers
+	Models
+	
+In Addition we have meidlwares
 
-<b>DataBase<b>
+The server is express app that uses expresshandelpars.
+
+The login is cookeis passed.
+Passwords encrypted by bcrypt.
+Cookeies signed by jwt.
+Tests written for the models only 
+
+<b>DataBase design<b>
 
 Schema:
 ```
