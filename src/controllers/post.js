@@ -76,7 +76,6 @@ exports.addLike =  async (req, res, err) => {
   
 };
 
-
 // This function handles the Get /getPosts route
 // and if error
 // a proper error message
@@ -84,16 +83,14 @@ exports.addLike =  async (req, res, err) => {
 exports.getPosts =  async (req, res, err) => {
   try {
     posts = await getallposts();
-    console.log(JSON.stringify(posts));
-    var result = posts.map(function(el) {
-      var o = Object.assign({}, el);
-      o.handle = '@jokerjames';
-      o.img = 'https://semantic-ui.com/images/avatar2/large/matthew.png';
-      return o;
+    var result = posts.map(function(elment) {
+      var object = Object.assign({}, elment);
+      object.handle = '@jokerjames';
+      object.img = 'https://semantic-ui.com/images/avatar2/large/matthew.png';
+      return object;
     })
     res.render('home', { signedIn: true, tweet: result });
   } catch (e) {
     res.render('home', { error: e.message });
   }
-  
 };

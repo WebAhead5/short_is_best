@@ -1,4 +1,4 @@
-const { addNewComment } = require('../models/comments/Coments.model');
+const { addNewComment } = require('../models/comments/Comments.model');
 
 // This function handles the POST /addNewComment route
 // checks if the content and user are exisits if not send back 
