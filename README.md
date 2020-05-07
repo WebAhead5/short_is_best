@@ -9,13 +9,13 @@ Our project is a kind of twitter that limit user to twite once a day.
 
 - Server Design
 
+<b>User Story<b>
+As a member of short_is_best :
+	
 <b>Login<b> :
 1) create new user on Register page.
 
 2) log in with your new account:)	
-  
-<b>User Story<b>
-As a member of short_is_best :
 
 -add twits/post
 
