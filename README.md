@@ -13,8 +13,9 @@ A project for twiting...:seedling:
 <b>website<b>:  wwww.asdas.com
 
 
-<b>Login<b> ,
-1)create new user on Register page.
+<b>Login<b> :
+1) create new user on Register page.
+
 2) log in with your new account:)	
   
 <b>User Story<b>
