@@ -14,8 +14,8 @@ A project for twiting...:seedling:
 
 
 <b>Login<b> ,
-Username: farid@gmail.com   ,Password: 102030
-
+1)create new user on Register page.
+2) log in with your new account:)	
   
 <b>User Story<b>
 As a member of short_is_best :
