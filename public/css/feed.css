@@ -2,7 +2,7 @@ html,
 body {
     height: 100%;
     padding-top: 10px;
-    background: #e6ecf1;
+    background: #ffffffd7;
 }
 
 #app {
@@ -29,6 +29,7 @@ body {
     border-radius: 0;
     background: whitesmoke;
     border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(177, 177, 177, 0.1), 0 10px 10px rgba(128, 121, 121, 0.1);
 }
 
 #app .content {
