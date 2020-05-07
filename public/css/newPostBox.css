@@ -5,7 +5,10 @@
     margin: 0 auto;
     text-align: center;
     border-radius: 5px;
-    background-color: #FFFFFF;
+    background-color: #E9EAED;
+    position: relative;
+    top: -20px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.15), 0 10px 10px rgba(196, 194, 194, 0.1);
 }
 
 div.lineSplit {
@@ -54,6 +57,10 @@ div.lineSplit {
     text-align: right;
     font-size: 14px;
     text-shadow: 0 1px 1px rgba(255, 255, 255, .75);
+}
+
+.warning {
+    color: #c00;
 }
 
 .postButton {

@@ -3,15 +3,13 @@
   <h1 class="main__title">Register</h1>
 
   <form class="register__form" action="/addUser" method="POST">
-  <div class="input-field"><input type="text"     name="name"     placeholder=""><label for="user">name</label></div>
-    <div class="input-field"><input type="text"     name="email"    placeholder=""><label for="user">email</label></div>
+    <div class="input-field"><input type="text" name="name" placeholder=""><label for="user">name</label></div>
+    <div class="input-field"><input type="text" name="email" placeholder=""><label for="user">email</label></div>
     <div class="input-field"><input type="password" name="password" placeholder=""><label for="user">Password</label></div>
     <div class="input-field"><input type="password" name="confirmPassword" placeholder=""><label for="Confirm password">Confirm password</label></div>
-  
-    <div class="input-field"><input type="password" name="admin"    placeholder=""><label for="user">admin?</label></div>
-    <input class="submit btn"  type="submit" value="Submit">
+    <div class="input-field"><input type="password" name="admin" placeholder=""><label for="user">admin?</label></div>
+    <input class="submit btn" type="submit" value="Submit">
   </form>
   <p id="error_mesage" class="error">{{error}}</p>
 
 </section>
-

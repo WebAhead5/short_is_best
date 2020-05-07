@@ -7,7 +7,7 @@
       <label class="twitter tweetHeader">Compose new Tweet</label>
       <span class="close"></span>
       <div class="lineSplit"></div>
-      <textarea name="content" class="messageBox" id="postMessage" placeholder="What's happening?"></textarea>
+      <textarea onkeydown="countDown()" class="messageBox" id="postMessage" placeholder="Whats happening?"></textarea>
       <label class="wordCounter" id="wordCounter">140</label>
       <input type="submit" class="postButton" id="submitPost" value="Tweet" />
     </form>
@@ -84,6 +84,7 @@
 
       <div class="form-container ">
         <form class="formhome">
+          <div class="icon col s12"><img src="https://img.icons8.com/color/48/000000/twitter.png" /></div>
           <h1>Sign in</h1>
           <button>Sign In</button>
       </div>
