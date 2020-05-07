@@ -32,7 +32,8 @@ As a member of short_is_best :
 
 <b>Website design<b>:
 the website contain 3 pages:
-
+	
+ [](https://github.com/WebAhead5/short_is_best/blob/amirBranch/Design/Screenshot%20from%202020-05-06%2020-41-17.png)
 **register page///image 
 
 **login page ///image
