@@ -1,6 +1,6 @@
 # short_is_best
 
- [](https://github.com/WebAhead5/short_is_best/blob/amirBranch/Design/Screenshot%20from%202020-05-06%2020-41-17.png)
+ ![](https://github.com/WebAhead5/short_is_best/blob/amirBranch/Design/Screenshot%20from%202020-05-06%2020-41-17.png)
 
 
 A project for twiting:seedling:
