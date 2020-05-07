@@ -12,10 +12,9 @@ h2 {
     text-align: center;
 }
 
-button {
+.bookButton {
     border-radius: 20px;
-    border: 1px solid #FF4B2B;
-    background-color: #FF4B2B;
+    background-color: #ee6e73;
     color: #FFFFFF;
     font-size: 12px;
     font-weight: bold;
@@ -23,7 +22,13 @@ button {
     letter-spacing: 1px;
 }
 
-button.ghost {
+.bookButton:hover {
+    text-decoration: none;
+    color: #fff;
+    background-color: rgb(0, 132, 180) !important;
+}
+
+.bookButton .ghost {
     background-color: transparent;
     border-color: #FFFFFF;
 }
